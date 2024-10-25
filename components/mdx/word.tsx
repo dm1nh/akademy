@@ -12,21 +12,34 @@ export interface WordProps {
   definition: string
 }
 
-export default function Word({ term, ipa, audio, cls, definition }: WordProps) {
-  const [play] = useSound(audio)
+export default function Word({
+  isEven = false,
+  term,
+  ipa,
+  audio,
+  cls,
+  definition,
+}: WordProps & { isEven: boolean }) {
+  const [play] = useSound(audio, { playbackRate: 0.8 })
 
   return (
-    <div className="flex items-center space-x-2 rounded bg-foreground/80 p-2 text-lg text-background">
-      <strong>{term}</strong>
-      <button
-        className="flex items-center space-x-2 text-background/75 focus:text-blue-400 active:text-blue-200"
-        onClick={() => play()}
-      >
-        <i>{ipa}</i>
-        <HearingIcon className="h-4 w-4" />
-      </button>
-      <span className="font-medium text-background/25">{cls}.</span>{" "}
-      <span>{definition}</span>
+    <div
+      className={`rounded border-2 border-border p-4 text-lg ${isEven ? "bg-foreground/5" : "bg-background"} space-y-1`}
+    >
+      <span>
+        <strong>{term}</strong>{" "}
+        <button
+          className="inline-flex items-center space-x-2 text-foreground/60 focus:text-blue-600 active:text-blue-400"
+          onClick={() => play()}
+        >
+          <i>{ipa}</i>
+          <HearingIcon className="h-4 w-4" />
+        </button>
+      </span>
+      <div>
+        <span className="font-medium text-foreground/40">{cls}.</span>{" "}
+        <span>{definition}</span>
+      </div>
     </div>
   )
 }
