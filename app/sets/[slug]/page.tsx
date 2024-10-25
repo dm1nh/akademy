@@ -33,8 +33,8 @@ export default function SetPage({
   if (!set) return notFound()
 
   return (
-    <div>
-      <h1>{set.title}</h1>
+    <div className="space-y-8">
+      <h1 className="text-4xl font-bold text-foreground/80">{set.title}</h1>
       <Mdx code={set.body.code} />
     </div>
   )
