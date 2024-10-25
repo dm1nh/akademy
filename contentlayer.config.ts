@@ -21,6 +21,7 @@ const computedFields: ComputedFields = {
 export const Set = defineDocumentType(() => ({
   name: "Set",
   filePathPattern: "sets/**/*.mdx",
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: true },
@@ -33,6 +34,7 @@ export const Set = defineDocumentType(() => ({
 export const Assignment = defineDocumentType(() => ({
   name: "Assignment",
   filePathPattern: "assignments/**/*.mdx",
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     description: { type: "string", required: true },
