@@ -5,7 +5,7 @@ import { getSet, getSortedSets } from "~/lib/data"
 
 export async function generateStaticParams() {
   return getSortedSets().map((set) => ({
-    slug: set.slug,
+    slug: set.slugAsParams,
   }))
 }
 
