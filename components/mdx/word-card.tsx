@@ -2,33 +2,25 @@
 
 import useSound from "use-sound"
 
-export interface WordProps {
+export interface Word {
   term: string
   ipa: string
-  audio: string
   cls: string
   definition: string
+  audio: string
 }
 
-export default function Word({
-  isEven = false,
-  term,
-  ipa,
-  audio,
-  cls,
-  definition,
-}: WordProps & { isEven: boolean }) {
-  const [play] = useSound(audio, { playbackRate: 0.8 })
+export default function WordCard({ term, ipa, cls, definition, audio }: Word) {
+  const [play] = useSound(audio, { playbackRate: 0.75 })
 
   return (
-    <div
-      className={`rounded border-2 border-border p-4 text-lg ${isEven ? "bg-foreground/5" : "bg-background"} space-y-1`}
-    >
+    <div className={`space-y-1 rounded-xl border border-border p-4 text-lg`}>
       <span>
         <strong>{term}</strong>{" "}
         <button
           className="inline-flex items-center space-x-2 text-foreground/60 focus:text-blue-600 active:text-blue-400"
           onClick={() => play()}
+          data-audio={audio}
         >
           <i>{ipa}</i>
         </button>

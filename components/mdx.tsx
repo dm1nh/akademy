@@ -1,8 +1,9 @@
 import { useMDXComponent } from "next-contentlayer/hooks"
 
 import { cn } from "~/lib/utils"
-import Word from "./mdx/word"
+import WordCard from "./mdx/word-card"
 import WordList from "./mdx/word-list"
+import WordWrapper from "./mdx/word-wrapper"
 
 export default function Mdx({ code }: { code: string }) {
   const Component = useMDXComponent(code)
@@ -36,7 +37,7 @@ const components = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h3
       className={cn(
-        "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
+        "mt-8 scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -45,7 +46,7 @@ const components = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h4
       className={cn(
-        "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "mt-8 scroll-m-20 border-b pb-1 text-xl font-semibold tracking-tight",
         className
       )}
       {...props}
@@ -78,6 +79,7 @@ const components = {
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li className={cn("mt-2", className)} {...props} />
   ),
-  Word,
+  WordCard,
   WordList,
+  WordWrapper,
 }

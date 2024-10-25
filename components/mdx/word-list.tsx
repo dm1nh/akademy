@@ -1,11 +1,11 @@
-import Word, { type WordProps } from "./word"
+import WordCard, { type Word } from "./word-card"
 
-export default function WordList({ words }: { words: WordProps[] }) {
+export default function WordList({ words }: { words: Word[] }) {
   return (
-    <ul className="mt-4 space-y-4">
-      {words.map((word, index) => (
+    <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {words.map((word) => (
         <li key={word.term}>
-          <Word isEven={index % 2 !== 0} {...word} />
+          <WordCard {...word} />
         </li>
       ))}
     </ul>
