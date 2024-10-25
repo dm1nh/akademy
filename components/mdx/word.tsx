@@ -2,8 +2,6 @@
 
 import useSound from "use-sound"
 
-import { HearingIcon } from "~/components/icons"
-
 export interface WordProps {
   term: string
   ipa: string
@@ -33,7 +31,6 @@ export default function Word({
           onClick={() => play()}
         >
           <i>{ipa}</i>
-          <HearingIcon className="h-4 w-4" />
         </button>
       </span>
       <div>
