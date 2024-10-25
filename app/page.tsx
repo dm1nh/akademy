@@ -12,7 +12,7 @@ export default async function HomePage() {
     <div className="space-y-16">
       <section className="space-y-8">
         <div className="flex items-center justify-between border-b border-border pb-2">
-          <h2 className="text-3xl font-bold">Sets</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Sets</h2>
           <Link href="/sets">
             <Button size="sm">View All</Button>
           </Link>
@@ -21,7 +21,7 @@ export default async function HomePage() {
       </section>
       <section className="space-y-8">
         <div className="flex items-center justify-between border-b border-border pb-2">
-          <h2 className="text-3xl font-bold">Assignments</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Assignments</h2>
           <Link href="/assignments">
             <Button size="sm">View All</Button>
           </Link>
