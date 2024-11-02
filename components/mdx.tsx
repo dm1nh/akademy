@@ -1,6 +1,7 @@
 import { useMDXComponent } from "next-contentlayer/hooks"
 
 import { cn } from "~/lib/utils"
+import AssignmentForm from "./mdx/assignment-form"
 import WordCard from "./mdx/word-card"
 import WordList from "./mdx/word-list"
 import WordWrapper from "./mdx/word-wrapper"
@@ -82,4 +83,5 @@ const components = {
   WordCard,
   WordList,
   WordWrapper,
+  AssignmentForm,
 }
