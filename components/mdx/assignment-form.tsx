@@ -2,11 +2,12 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { useLocalStorage } from "usehooks-ts"
 import { z } from "zod"
 
 import { Button } from "~/components/ui/button"
 import { Form, FormField } from "~/components/ui/form"
-import { type Answer, type Question } from "~/types"
+import { type Answer, type Profile, type Question } from "~/types"
 import Essay from "./essay"
 import MultipleChoice from "./multiple-choice"
 import ShortAnswer from "./short-answer"
@@ -14,16 +15,34 @@ import ShortAnswer from "./short-answer"
 const FormSchema = z.record(z.string(), z.string())
 
 interface AssignmentFormProps {
+  title: string
   questions: Question[]
 }
 
-export default function AssignmentForm({ questions }: AssignmentFormProps) {
+export default function AssignmentForm({
+  title,
+  questions,
+}: AssignmentFormProps) {
+  const [user] = useLocalStorage<Profile | null>("user", null)
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
 
-  function onSubmit(values: z.infer<typeof FormSchema>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof FormSchema>) {
+    if (!user) return
+
+    const res = await fetch("/api/send-mail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: "ndminhdev@gmail.com",
+        subject: `${title} - ${user.name}`,
+        html: "<pre>" + JSON.stringify(values) + "</pre>",
+      }),
+    })
   }
 
   return (

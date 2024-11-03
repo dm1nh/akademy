@@ -9,7 +9,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <ul className="flex items-center space-x-6">
+      <ul className="flex items-center space-x-4">
         <NavLink href="/" active={pathname === "/"}>
           Home
         </NavLink>

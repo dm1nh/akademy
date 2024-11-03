@@ -1,5 +1,14 @@
 export type SVGProps = React.SVGAttributes<SVGSVGElement>
 
+export interface User {
+  username: string
+  name: string
+  image?: string
+  password: string
+}
+
+export type Profile = Pick<User, "username" | "name">
+
 export interface Answer {
   id: string
   text: string
