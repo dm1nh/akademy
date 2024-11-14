@@ -71,6 +71,9 @@ const components = {
       {...props}
     />
   ),
+  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p className={cn("mt-2", className)} {...props} />
+  ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
   ),
